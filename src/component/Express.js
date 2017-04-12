@@ -9,6 +9,11 @@ import ListItem from './ListItem'
 import './Express.css'
 
 export default class Express extends Component {
+  constructor() {
+    super()
+
+    document.title = '物流信息查询'
+  }
   render() {
     const expressData = qs.parse(this.props.location.search)
     return (
