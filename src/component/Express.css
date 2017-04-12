@@ -1,0 +1,27 @@
+.Express-subheader {
+    background: #dedede;
+    color: #212121;
+    margin: 0;
+    font-size: 14px;
+    padding-left: 14px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.Express-tip {
+    text-align: center;
+    font-size: 14px;
+    color: #757575;
+}
+
+.Express-tip u {
+    color: #03A9F4;
+}
+
+.QRCode {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}

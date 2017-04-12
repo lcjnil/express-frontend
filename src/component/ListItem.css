@@ -1,0 +1,18 @@
+.ListItem {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+
+.List-label {
+    color: #757575;
+    width: 50px;
+}
+
+.List-text {
+    color: #212121;
+}
