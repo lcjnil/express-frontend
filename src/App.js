@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom'
 
-import Express from './component/Express'
+import Express from './page/Express'
 
 const App = () =>
   <Router>

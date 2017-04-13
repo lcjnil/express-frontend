@@ -4,7 +4,7 @@ import AppBar from 'material-ui/AppBar'
 import MediaQuery from 'react-responsive'
 import QRCode from 'qrcode.react'
 
-import ListItem from './ListItem'
+import ListItem from '../component/ListItem'
 
 import './Express.css'
 
