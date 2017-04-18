@@ -5,10 +5,14 @@ import {
 } from 'react-router-dom'
 
 import Express from './page/Express'
+import Admin from './page/Admin'
 
 const App = () =>
   <Router>
-    <Route path="/express" component={Express}/>
+    <div style={{height: '100%'}}>
+      <Route path="/express" component={Express} />
+      <Route path="/admin" component={Admin} />
+    </div>
   </Router>
 
 export default App
