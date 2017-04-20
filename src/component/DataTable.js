@@ -42,7 +42,7 @@ export default class DataTable extends Component {
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.props.express.map(v => (
-              <TableRow>
+              <TableRow key={v.id}>
                 <TableRowColumn>{v.expressId}</TableRowColumn>
                 <TableRowColumn>{v.type}</TableRowColumn>
                 <TableRowColumn>{v.weight}</TableRowColumn>
