@@ -42,10 +42,10 @@ export default class DataTable extends Component {
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.props.express.map(v => (
-              <TableRow key={v.id}>
+              <TableRow key={v.expressId}>
                 <TableRowColumn>{v.expressId}</TableRowColumn>
                 <TableRowColumn>{v.type}</TableRowColumn>
-                <TableRowColumn>{v.weight}</TableRowColumn>
+                <TableRowColumn>{v.weight}kg</TableRowColumn>
                 <TableRowColumn>{v.senderPhone}</TableRowColumn>
                 <TableRowColumn>{v.receiverPhone}</TableRowColumn>
                 <TableRowColumn>
@@ -64,7 +64,7 @@ export default class DataTable extends Component {
           onRequestClose={this.handleClose}
         >
           {location.origin}/express?{this.state.code}}
-          <QRCode value={`${location.origin}/express?${this.state.code}`} size="300" fgColor="#212121"/>
+          <QRCode value={`${location.origin}/express?${this.state.code}`} size={300} fgColor="#212121"/>
         </Dialog>
       </Paper>
     )

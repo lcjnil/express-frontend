@@ -5,13 +5,15 @@ import {
 } from 'react-router-dom'
 
 import Express from './page/Express'
-import Admin from './page/Admin'
+import Login from './page/Login'
+import Manage from './page/Manage'
 
 const App = () =>
   <Router>
     <div style={{height: '100%'}}>
       <Route path="/express" component={Express} />
-      <Route path="/admin" component={Admin} />
+      <Route path="/admin" component={Login} />
+      <Route path="/manage" component={Manage} />
     </div>
   </Router>
 
