@@ -11,8 +11,8 @@ import Manage from './page/Manage'
 const App = () =>
   <Router>
     <div style={{height: '100%'}}>
+      <Route path="/" component={Login} />
       <Route path="/express" component={Express} />
-      <Route path="/admin" component={Login} />
       <Route path="/manage" component={Manage} />
     </div>
   </Router>
