@@ -6,22 +6,34 @@ import {
   from 'material-ui/Table'
 import FlatButton from 'material-ui/FlatButton'
 import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
+import Dialog from 'material-ui/Dialog'
 
 export default class DataTable extends Component {
   state = {
-    open: false
+    open: false,
+    phone: '',
+    name: '',
+    password: '',
   }
-  showCode = (code) => {
+  openDialog = () => {
     this.setState({
       open: true,
-      code
     })
   }
 
-  handleClose = () => {
+  closeDialog = () => {
     this.setState({
-      open: false
+      open: false,
+      phone: '',
+      name: '',
+      password: '',
     })
+  }
+
+  createEmployee = () => {
+    this.props.createEmployee(this.state)
+    this.closeDialog()
   }
 
   render () {
@@ -44,19 +56,51 @@ export default class DataTable extends Component {
                 <TableRowColumn>{v.phone}</TableRowColumn>
                 <TableRowColumn>
                   <TableRowColumn>
-                    <FlatButton secondary label="删除" />
-                    <FlatButton primary label="修改" />
+                    <FlatButton secondary label="删除" onClick={this.props.delete(v.userId)} />
                   </TableRowColumn>
                 </TableRowColumn>
               </TableRow>
             ))}
             <TableRow>
               <TableRowColumn colSpan="4" style={{textAlign: 'center'}}>
-                <RaisedButton label="新增快递员" primary fullWidth />
+                <RaisedButton label="新增快递员" primary fullWidth onClick={this.openDialog}/>
               </TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>
+
+        <Dialog
+          title="新建快递员"
+          open={this.state.open}
+          onRequestClose={this.closeDialog}
+        >
+          <TextField
+            hintText="请输入电话号码"
+            floatingLabelText="电话号码"
+            type="text"
+            fullWidth
+            value={this.state.phone}
+            onChange={e => this.setState({phone: e.target.value})}
+          />
+          <TextField
+            hintText="请输入姓名"
+            floatingLabelText="姓名"
+            type="text"
+            fullWidth
+            value={this.state.name}
+            onChange={e => this.setState({name: e.target.value})}
+          />
+          <TextField
+            hintText="请输入密码"
+            floatingLabelText="密码"
+            type="password"
+            fullWidth
+            value={this.state.password}
+            onChange={e => this.setState({password: e.target.value})}
+          />
+          <RaisedButton label="确认" primary fullWidth onClick={this.createEmployee} />
+          <FlatButton label="取消" primary fullWidth onClick={this.closeDialog} />
+        </Dialog>
       </Paper>
     )
   }

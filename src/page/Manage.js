@@ -58,6 +58,42 @@ export default class Manage extends Component {
       .catch(() => this.setState({redirect: true}))
   }
 
+  delete = (userId) => () => {
+    fetch(`${config.server}/api/employee/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('token')
+      }
+    }).then(() => {
+      const employee = this.state.employee
+      const index = employee.findIndex(v => v.userId === userId)
+      this.setState({
+        employee: [...employee.slice(0, index), ...employee.slice(index + 1)]
+      })
+    })
+  }
+
+  createEmployee = ({name, phone, password}) => {
+    fetch(`${config.server}/api/employee`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-Access-Token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        name, phone, password
+      })
+    }).then(r => r.json())
+      .then((newEmployee) => {
+        const employee = this.state.employee
+        this.setState({
+          employee: [...employee, newEmployee]
+        })
+      })
+  }
   render () {
     if (this.state.redirect) {
       return <Redirect to="/admin" />
@@ -70,7 +106,7 @@ export default class Manage extends Component {
             <ExpressTable express={this.state.express} />
           </Tab>
           <Tab label="人员管理" value="employeeManagement">
-            <EmployeeTable employee={this.state.employee} />
+            <EmployeeTable employee={this.state.employee} delete={this.delete} createEmployee={this.createEmployee} />
           </Tab>
         </Tabs>
       </div>
